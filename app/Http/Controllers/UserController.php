@@ -9,7 +9,21 @@
 namespace App\Http\Controllers;
 
 
-class UserController
-{
+use App\User;
 
+class UserController extends Controller
+{
+    public function index($id){
+
+        try{
+            $user = User::find($id);
+
+            return response()->json(['status'=>'success','message'=>'Success','data'=>$user],200);
+
+        }catch (\Exception $e){
+
+            return response()->json(['status'=>'failed','message'=>'Internal Server Error','data'=>[]],500);
+
+        }
+    }
 }
