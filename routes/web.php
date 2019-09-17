@@ -11,11 +11,6 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
-
-
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('register',  ['uses' => 'Auth\RegisterController@register']);
     $router->post('login',  ['uses' => 'Auth\LoginController@index']);
