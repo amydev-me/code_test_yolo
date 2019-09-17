@@ -31,12 +31,12 @@ class ValidCurrentUserPassword implements Rule
     public function passes($attribute, $value)
     {
 
-         $user = User::where('email',$this->request->email)->first();
-
-        if(Hash::check($value,$user->password)){
-            return true;
+        $user = User::where('email', $this->request->email)->first();
+        if ($user) {
+            if (Hash::check($value, $user->password)) {
+                return true;
+            }
         }
-
         return false;
 
     }
