@@ -18,12 +18,11 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('register',  ['uses' => 'Auth\RegisterController@register']);
+    $router->post('login',  ['uses' => 'Auth\LoginController@index']);
 
 
     $router->group(['middleware' => 'client'], function () use ($router) {
-        $router->get('/user',function(){
-            return 'Auth user can see this message';
-        });
+        $router->get('user/{id}','UserController@index');
     });
 });
 
