@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Dusterio\LumenPassport\LumenPassport;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,6 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
+
+        LumenPassport::tokensExpireIn(Carbon::now()->addDay(30), 2);
 
     }
 }

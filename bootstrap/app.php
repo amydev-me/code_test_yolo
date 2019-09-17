@@ -25,7 +25,8 @@ $app = new Laravel\Lumen\Application(
 
  $app->withEloquent();
 
- $app->configure('auth');
+$app->configure('auth');
+
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
@@ -95,6 +96,7 @@ $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 | can respond to, as well as the controllers that may handle them.
 |
 */
+Dusterio\LumenPassport\LumenPassport::routes($app->router, ['prefix' => 'api/oauth'] );
 
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
