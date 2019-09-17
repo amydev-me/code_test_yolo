@@ -15,9 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
-
-        LumenPassport::tokensExpireIn(Carbon::now()->addDay(30), 2);
+        LumenPassport::allowMultipleTokens();
+//        LumenPassport::tokensExpireIn(Carbon::now()->addDay(15), 2);
 
     }
 }
