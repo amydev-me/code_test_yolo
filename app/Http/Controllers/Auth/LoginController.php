@@ -18,7 +18,7 @@ class LoginController extends Controller
 {
     public function index(Request $request)
     {
-        try{
+//        try{
             $this->validate($request, [
                 'email' => ['required','email', new CheckEmail()],
                 'password' => ['required', new ValidCurrentUserPassword($request)]
@@ -27,8 +27,8 @@ class LoginController extends Controller
             $token= RequestToken::credential($request->email, $request->password);
 
             return response()->json(['status'=>'success','message'=>'Success','data'=>$token],200);
-        }catch (\Exception $e){
-            return response()->json(['status' => 'failed', 'message' => 'Internal Server Error', 'data' => []], 500);
-        }
+//        }catch (\Exception $e){
+//            return response()->json(['status' => 'failed', 'message' => 'Internal Server Error', 'data' => []], 500);
+//        }
     }
 }
