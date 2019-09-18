@@ -20,9 +20,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('register',  ['uses' => 'Auth\RegisterController@register']);
     $router->post('login',  ['uses' => 'Auth\LoginController@index']);
 
-    $router->get('/test', function () use ($router) {
-        return 'Test';
-    });
     $router->group(['middleware' => 'client'], function () use ($router) {
         $router->get('user/{id}','UserController@index');
     });
