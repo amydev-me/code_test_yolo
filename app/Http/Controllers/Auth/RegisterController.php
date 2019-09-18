@@ -24,7 +24,7 @@ class RegisterController extends Controller
             'full_name' => 'required|max:255'
         ]);
 
-        try {
+//        try {
             $user = User::create([
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
@@ -33,10 +33,10 @@ class RegisterController extends Controller
 
             $token = RequestToken::credential($user->email, $request->password);
 
-            return response()->json(['status' => 'success', 'message' => 'Success', 'data' => []], 201);
+            return response()->json(['status' => 'success', 'message' => 'Success', 'data' => $token], 201);
 
-        } catch (\Exception $e) {
-            return response()->json(['status' => 'failed', 'message' => 'Internal Server Error', 'data' => []], 500);
-        }
+//        } catch (\Exception $e) {
+//            return response()->json(['status' => 'failed', 'message' => 'Internal Server Error', 'data' => []], 500);
+//        }
     }
 }
